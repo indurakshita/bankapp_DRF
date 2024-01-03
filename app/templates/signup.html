@@ -1,0 +1,24 @@
+<!-- bankapp/templates/signup.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Signup - My Bank App
+
+{% endblock title %}
+
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="{% static 'signup.css' %}">
+{% endblock styles %}
+
+{% block content %}
+    <div class="form-style">
+    <h2>Signup</h2>
+    <form method="post" action="{% url 'signup' %}" class="signup-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Signup</button>
+    </form>
+    <div class="center-text">
+        <a href="{% url 'login' %}">Already have an account? Login here.</a>
+    </div>
+</div>
+{% endblock %}
