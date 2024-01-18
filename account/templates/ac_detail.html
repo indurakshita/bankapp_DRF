@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Account Detail
+{% endblock title %}
+
+{% block content %}
+    <div class="container mt-5">
+        <div class="text-center">
+            <h2>Account Detail</h2>
+            <p>User: {{ user_profile.user.username }}</p>
+            <p>Account Number: {{ user_profile.account_number }}</p>
+            <p>Balance: {{ user_profile.balance }}</p>
+        </div>
+
+        <div class="mt-5">
+            <h3 class="text-center">Transaction History</h3>
+            <ul class="list-group text-center">
+                {% for transaction in transactions %}
+                    <li class="list-group-item">{{ transaction.transaction_type }} - {{ transaction.amount }} - {{ transaction.timestamp }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{% url 'custom-userprofile-list' %}" class="btn btn-primary">View User Profiles</a>
+            <a href="{% url 'transactions' %}" class="btn btn-success">Perform a Transaction</a>
+        </div>
+    </div>
+{% endblock content %}
